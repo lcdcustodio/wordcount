@@ -1,6 +1,7 @@
 from django.test import TestCase
 from django.urls import resolve
 from django.test import Client
+from support.tools import *
 
 class Test(TestCase):
 
@@ -46,3 +47,10 @@ class Test(TestCase):
         input_text = "python manage.py runserver"
         response = c.get('/result/', {'fulltext': input_text}, HTTP_X_REQUESTED_WITH='XMLHttpRequest')
         self.assertEqual(response.context['fulltext'], input_text)
+
+
+    def test_no_case_sensitive(self):
+
+        text = "Hello world hello"
+        result = WCTools().no_case_sensitive(text.split())
+        self.assertEqual(2, result)

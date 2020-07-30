@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from support.tools import *
 
 def home(request):
     return render(request, 'home.html')
@@ -7,19 +8,8 @@ def home(request):
 def result(request):
 
     fulltext = request.GET['fulltext']
-    wordlist = fulltext.split()
 
-    temp = []
-    count = 0
+    result = WCTools().no_case_sensitive(fulltext.split())
 
-    for word in wordlist:
-
-        if word.lower() not in temp:
-
-            count +=1
-            temp.append(word.lower())
-
-    #count = len(fulltext.split())
-
-    return render(request, 'result.html', {'fulltext': fulltext, 'count': count})
+    return render(request, 'result.html', {'fulltext': fulltext, 'count': result})
 
