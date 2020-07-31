@@ -54,3 +54,21 @@ class Test(TestCase):
         text = "Hello world hello"
         result = WCTools().no_case_sensitive(text.split())
         self.assertEqual(2, result)
+
+    """
+    BEGIN: More examples
+    """
+
+    def test_upper(self):
+        self.assertEqual('hello'.upper(), 'HELLO')
+
+    def get_greetings(self):
+        return 'Hello World!'
+
+    def test_get_helloworld(self):
+        self.assertEqual(self.get_greetings(), 'Hello World!')
+
+
+    """
+    END: More examples
+    """
