@@ -62,6 +62,10 @@ class Test(TestCase):
     def test_upper(self):
         self.assertEqual('hello'.upper(), 'HELLO')
 
+    def test_lower(self):
+        self.assertEqual('HELLO'.lower(), 'hello')
+
+
     def get_greetings(self):
         return 'Hello World!'
 
